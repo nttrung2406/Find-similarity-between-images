@@ -3,7 +3,7 @@
 Similar feature actraction using kNN and SIFT library from OpenCV
 
 **Output:**
-
-Similarity Percentage: 12.19%
-Similarity: 308
+size image 1 and image 2
+Similarity Percentage: [percentage]
+Similarity: [points of similarity]
 
