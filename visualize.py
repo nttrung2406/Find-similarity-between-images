@@ -1,16 +1,13 @@
+from lib import *
+
 def showplt(image, title=None, pltnative=False):
     if pltnative:
         plt.imshow(image)
     else:
         plt.imshow(image[...,::-1])
     plt.title(title)
-    plt.xticks([]), plt.yticks([])  # hide tick values on X and Y axis
+    plt.xticks([]), plt.yticks([]) 
     plt.show()
-
-def save_image(directory, file_name, image):
-    if not os.path.exists(directory):
-            os.makedirs(directory)
-    cv2.imwrite(directory+'/'+file_name, image)
 
 def print_similarity(img1, img2, good_matches):
   num_good_matches = len(good_matches)
@@ -21,7 +18,6 @@ def visualize_similarity(img1, img2, good_matches):
     keypoints1, _ = sift.detectAndCompute(img1, None)
     keypoints2, _ = sift.detectAndCompute(img2, None)
 
-    # Create an empty image with a white background
     img_matches = np.empty((max(img1.shape[0], img2.shape[0]), img1.shape[1] + img2.shape[1], 3), dtype=np.uint8)
     img_matches[:img1.shape[0], :img1.shape[1]] = img1
     img_matches[:img2.shape[0], img1.shape[1]:] = img2
@@ -40,6 +36,6 @@ def visualize_similarity(img1, img2, good_matches):
         cv2.circle(img_matches, (int(x1), int(y1)), 4, (0, 255, 0), 1)
         cv2.circle(img_matches, (int(x2), int(y2)), 4, (0, 255, 0), 1)
 
-    # Display the image with matched keypoints
-    cv2_imshow(img_matches)
+    cv2.imshow("Matches", img_matches)
     cv2.waitKey(0)
+    cv2.destroyAllWindows()
