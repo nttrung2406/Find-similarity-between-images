@@ -1,0 +1,10 @@
+cv2
+numpy
+matplotlib
+os
+glob
+PIL
+torch
+sentence_transformers
+psycopg2
+clip
